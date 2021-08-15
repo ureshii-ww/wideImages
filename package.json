@@ -1,0 +1,25 @@
+{
+  "name": "dtf-wide-feed-images",
+  "version": "1.0.0",
+  "description": "Script makes images wider in DTF feed",
+  "main": "src/index.js",
+  "scripts": {
+    "dev": "cross-env NODE_ENV=development webpack --mode development",
+    "build": "cross-env NODE_ENV=production webpack --mode production"
+  },
+  "keywords": [
+    "DTF"
+  ],
+  "author": "ureshii-ww",
+  "license": "GPL-3.0-only",
+  "devDependencies": {
+    "@babel/core": "^7.15.0",
+    "@babel/preset-env": "^7.15.0",
+    "babel-loader": "^8.2.2",
+    "clean-webpack-plugin": "^4.0.0-alpha.0",
+    "cross-env": "^7.0.3",
+    "terser-webpack-plugin": "^5.1.4",
+    "webpack": "^5.50.0",
+    "webpack-cli": "^4.7.2"
+  }
+}
