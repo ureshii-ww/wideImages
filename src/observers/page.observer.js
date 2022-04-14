@@ -1,6 +1,8 @@
 import { findFeedContainer } from '../heplers/find-feed-container';
-import { modifyInitialChunk } from '../modifiers/modify-initial-chunk';
+import { modifyFeedChunk } from '../modifiers/modify-feed-chunk';
 import { observeFeed } from './feed.observer';
+import { findPostContainer } from '../heplers/find-post-container';
+import { modifyEntry } from '../modifiers/modify-entry';
 
 export function observePage (pageWrapper) {
   const pageWrapperObserver = new MutationObserver((mutations) => {
@@ -8,8 +10,13 @@ export function observePage (pageWrapper) {
       if (mutation.addedNodes.length > 0) {
         const feedContainer = findFeedContainer(mutation.addedNodes);
         if (feedContainer) {
-          modifyInitialChunk(feedContainer);
+          modifyFeedChunk(feedContainer);
           observeFeed(feedContainer);
+        }
+        
+        const postContainer = findPostContainer(mutation.addedNodes);
+        if (postContainer) {
+          modifyEntry(postContainer);
         }
       }
     }

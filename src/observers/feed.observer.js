@@ -1,4 +1,4 @@
-import { modifyFeedItem } from '../modifiers/modify-feed-item';
+import { modifyEntry } from '../modifiers/modify-entry';
 
 export function observeFeed (feedContainer) {
   const feedObserver = new MutationObserver((mutationList) => {
@@ -6,7 +6,7 @@ export function observeFeed (feedContainer) {
       if (mutation.addedNodes.length > 0) {
         const newChunk = mutation.addedNodes[0];
         for (const feedItem of newChunk.children) {
-          modifyFeedItem(feedItem);
+          modifyEntry(feedItem);
         }
       }
     }

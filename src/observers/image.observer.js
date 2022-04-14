@@ -1,4 +1,4 @@
-import { changeImageSource } from '../modifiers/change-image-source';
+import { modifyImageSource } from '../modifiers/modify-image-source';
 
 export function observeImage(image) {
   const imgWrapper = image.getElementsByClassName('andropov_image__inner')[0];
@@ -8,7 +8,7 @@ export function observeImage(image) {
       if (mutation.addedNodes.length > 0) {
         for (const node of mutation.addedNodes) {
           if (node.tagName === 'IMG') {
-            changeImageSource(node);
+            modifyImageSource(node);
             observer.disconnect();
           }
         }
