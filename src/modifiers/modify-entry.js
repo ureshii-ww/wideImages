@@ -5,9 +5,10 @@ import { modifyImageOuterContainerStyle } from './modify-image-outer-container-s
 export function modifyEntry(feedItem) {
   const imagesOuterContainers = feedItem.getElementsByClassName('content-image');
   for (const imageOuterContainer of imagesOuterContainers) {
-    if (imageOuterContainer.getElementsByClassName('andropov_video').length === 0) {
+    const imageInnerContainer = imageOuterContainer.getElementsByClassName('andropov_image')[0];
+    if (imageInnerContainer && +imageInnerContainer.getAttribute('data-image-width') >= 640) {
       modifyImageOuterContainerStyle(imageOuterContainer);
-      modifyImageInnerContainerStyle(imageOuterContainer);
+      modifyImageInnerContainerStyle(imageInnerContainer);
       observeImage(imageOuterContainer);
     }
   }
